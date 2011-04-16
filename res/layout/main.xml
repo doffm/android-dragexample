@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.doffman.dragarea.DragArea
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drag_area"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    >
+    <RelativeLayout
+        android:id="@+id/dots"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_one"
+            android:src="@drawable/red_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_two"
+            android:src="@drawable/red_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/dot_one"
+            />
+    </RelativeLayout>
+</com.doffman.dragarea.DragArea>

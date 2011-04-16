@@ -1,0 +1,3 @@
+[submodule "dep/dragarea"]
+	path = dep/dragarea
+	url = git@github.com:doffm/android-dragarea.git
