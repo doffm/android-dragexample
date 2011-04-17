@@ -64,8 +64,9 @@ class DraggableDot extends ImageView
       public boolean onTouch(View view, MotionEvent event)
       {
         if (event.getAction() == MotionEvent.ACTION_DOWN) { 
-          dragArea.startDrag(DraggableDot.this.getDrawable(),
-            new Point((int)event.getX(), (int)event.getY()));
+          //dragArea.startDrag(DraggableDot.this.getDrawable(),
+          //  new Point((int)event.getX(), (int)event.getY()));
+          dragArea.startDrag(new ViewDragShadowBuilder(DraggableDot.this));
           return true;
         } else {
           return false;
