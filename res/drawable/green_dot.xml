@@ -2,10 +2,13 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <size
-        android:width="80dp"
-        android:height="80dp"
+        android:width="50dp"
+        android:height="50dp"
         />
-    <solid
-        android:color="#FF00FF00"
+    <gradient
+        android:angle="315"
+        android:startColor="#FF66CC66"
+        android:endColor="#FF11CC11"
+        android:type="linear"
         />
 </shape>

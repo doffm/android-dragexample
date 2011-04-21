@@ -1,27 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.doffman.dragarea.DragArea
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    >
+<com.doffman.dragarea.DragArea
     android:id="@+id/drag_area"
     android:layout_width="fill_parent" 
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
     >
     <RelativeLayout
         android:id="@+id/dots"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:gravity="center"
         >
         <com.doffman.dragarea.example.DraggableDot
             android:id="@+id/dot_one"
-            android:src="@drawable/red_dot"
+            android:text="1"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_two"
+            android:text="2"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_toRightOf="@id/dot_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            />
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_three"
+            android:text="3"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_toRightOf="@id/dot_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
         <com.doffman.dragarea.example.DraggableDot
-            android:id="@+id/dot_two"
-            android:src="@drawable/red_dot"
+            android:id="@+id/dot_four"
+            android:text="4"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_below="@id/dot_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/dot_one"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            />
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_five"
+            android:text="5"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_below="@id/dot_one"
+            android:layout_toRightOf="@id/dot_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            />
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_six"
+            android:text="6"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_below="@id/dot_one"
+            android:layout_toRightOf="@id/dot_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_seven"
+            android:text="7"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_below="@id/dot_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            />
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_eight"
+            android:text="8"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_below="@id/dot_four"
+            android:layout_toRightOf="@id/dot_seven"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            />
+        <com.doffman.dragarea.example.DraggableDot
+            android:id="@+id/dot_nine"
+            android:text="9"
+            android:background="@drawable/red_dot"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_below="@id/dot_four"
+            android:layout_toRightOf="@id/dot_eight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             />
     </RelativeLayout>
 </com.doffman.dragarea.DragArea>
+<TextView
+    android:text="1 + 1 = 2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="0"
+    android:gravity="center"
+    android:padding="10dp"
+    style="@android:style/TextAppearance.Large"
+    android:textStyle="bold"
+    android:shadowColor="#BB000000"
+    android:shadowRadius="2.75"
+    android:background="@android:drawable/title_bar"
+    />
+</LinearLayout>

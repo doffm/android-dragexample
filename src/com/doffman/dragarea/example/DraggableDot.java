@@ -23,19 +23,31 @@ package com.doffman.dragarea.example;
 
 import android.view.View;
 import android.view.MotionEvent;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 
 import com.doffman.dragarea.*;
 
-class DraggableDot extends ImageView
+class DraggableDot extends TextView
 {
+  private Drawable mWhiteDot;
+  private Drawable mRedDot;
+  private Drawable mGreenDot;
+  private Drawable mTranslucentDot;
+
   private void initDraggableDot()
   {
-    // TODO Nothing for now.
+    Resources res = getContext().getResources();
+
+    mWhiteDot       = res.getDrawable(R.drawable.white_dot);
+    mRedDot         = res.getDrawable(R.drawable.red_dot);
+    mGreenDot       = res.getDrawable(R.drawable.green_dot);
+    mTranslucentDot = res.getDrawable(R.drawable.translucent_dot);
   }
 
   public DraggableDot(Context context)
@@ -64,9 +76,11 @@ class DraggableDot extends ImageView
       public boolean onTouch(View view, MotionEvent event)
       {
         if (event.getAction() == MotionEvent.ACTION_DOWN) { 
-          //dragArea.startDrag(DraggableDot.this.getDrawable(),
-          //  new Point((int)event.getX(), (int)event.getY()));
-          dragArea.startDrag(new ViewDragShadowBuilder(DraggableDot.this));
+          dragArea.startDrag(new DrawableDragShadowBuilder(
+                                                  DraggableDot.this,
+                                                  mTranslucentDot,
+                                                  new Point((int)event.getX() - getPaddingLeft(),
+                                                            (int)event.getY() - getPaddingTop())));
           return true;
         } else {
           return false;
@@ -82,17 +96,17 @@ class DraggableDot extends ImageView
         switch (dragEvent.getAction())
         {
           case DragEvent.ACTION_DRAG_STARTED:
-            DraggableDot.this.setImageResource(R.drawable.white_dot);
+            DraggableDot.this.setBackgroundDrawable(mGreenDot);
             break;
           case DragEvent.ACTION_DRAG_ENTERED:
-            DraggableDot.this.setImageResource(R.drawable.green_dot);
+            DraggableDot.this.setBackgroundDrawable(mWhiteDot);
             break;
           case DragEvent.ACTION_DRAG_EXITED:
-            DraggableDot.this.setImageResource(R.drawable.white_dot);
+            DraggableDot.this.setBackgroundDrawable(mGreenDot);
             break;
           case DragEvent.ACTION_DROP:
           case DragEvent.ACTION_DRAG_ENDED:
-            DraggableDot.this.setImageResource(R.drawable.red_dot);
+            DraggableDot.this.setBackgroundDrawable(mRedDot);
             break;
           default:
             break;
