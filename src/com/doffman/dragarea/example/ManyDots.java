@@ -27,6 +27,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.MotionEvent;
+import android.widget.TextView;
 import android.graphics.Point;
 
 import com.doffman.dragarea.DragArea;
@@ -41,6 +42,7 @@ public class ManyDots extends Activity
       setContentView(R.layout.main);
 
       final DragArea dragArea = (DragArea) findViewById(R.id.drag_area);
+      final TextView reportView = (TextView) findViewById(R.id.report_view);
 
       final ViewGroup dots = (ViewGroup) findViewById(R.id.dots);
       // FIXME Am I doing something non-androidy here? There isn't
@@ -49,7 +51,7 @@ public class ManyDots extends Activity
       for (int i = 0; i < dots.getChildCount(); i++)
       {
         DraggableDot d = (DraggableDot) dots.getChildAt(i);
-        d.setDragArea(dragArea);
+        d.setDragArea(dragArea, reportView);
       }
     }
 }

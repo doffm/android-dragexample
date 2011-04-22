@@ -31,6 +31,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 
+import android.os.Bundle;
+
 import com.doffman.dragarea.*;
 
 class DraggableDot extends TextView
@@ -68,7 +70,7 @@ class DraggableDot extends TextView
     initDraggableDot();
   }
 
-  public void setDragArea(final DragArea dragArea)
+  public void setDragArea(final DragArea dragArea, final TextView reportView)
   {
     this.setOnTouchListener(new View.OnTouchListener()
     {
@@ -76,7 +78,10 @@ class DraggableDot extends TextView
       public boolean onTouch(View view, MotionEvent event)
       {
         if (event.getAction() == MotionEvent.ACTION_DOWN) { 
-          dragArea.startDrag(new DrawableDragShadowBuilder(
+          Bundle data = new Bundle();
+          data.putCharSequence("number", getText());
+          dragArea.startDrag(data,
+                             new DrawableDragShadowBuilder(
                                                   DraggableDot.this,
                                                   mTranslucentDot,
                                                   new Point((int)event.getX() - getPaddingLeft(),
@@ -105,6 +110,14 @@ class DraggableDot extends TextView
             DraggableDot.this.setBackgroundDrawable(mGreenDot);
             break;
           case DragEvent.ACTION_DROP:
+            final Bundle data = dragEvent.getBundle();
+            final CharSequence dropText = data.getCharSequence("number");
+
+            int a = Integer.parseInt(dropText.toString());
+            int b = Integer.parseInt(DraggableDot.this.getText().toString());
+            reportView.setText(dropText + " + " + DraggableDot.this.getText() + " = " + Integer.toString(a + b));
+            DraggableDot.this.setBackgroundDrawable(mRedDot);
+            break;
           case DragEvent.ACTION_DRAG_ENDED:
             DraggableDot.this.setBackgroundDrawable(mRedDot);
             break;
